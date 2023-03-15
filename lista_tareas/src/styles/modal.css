@@ -1,0 +1,73 @@
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.modal_title{
+    
+    grid-area: a;
+    max-height: 68px;
+    margin-left: 3px;
+    margin-top: 7px;
+    border: none;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align:center;
+    background-color: #DCBCCF;  
+    border-bottom-left-radius: 40%;
+    border-top-left-radius: 40%;
+    word-wrap: break-word;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.modal_button{
+    grid-area: b;
+    max-height: 68px;
+    margin-top: 7px;
+    margin-right: 3px;
+    background-color: #DCBCCF;  
+    border: none;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.modal_msj{
+    grid-area: c;
+    font-size: 0.8em;
+    padding: 7px;
+    margin: 3px;
+    text-align:center;
+    font-weight: 540;
+    background-color: #DCBCCF;
+    border-bottom-left-radius: 60%;
+    border-top-left-radius: 40%;
+    border-bottom-right-radius: 50%;
+    border-top-right-radius: 70%;
+    word-wrap: break-word;
+    /* overflow: hidden; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.modal_button:hover{
+    background-color: red;
+}

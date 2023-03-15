@@ -1,0 +1,14 @@
+
+.App{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    align-content: flex-start;
+    justify-content: stretch;
+    text-align: center;
+    background-color: #3a3a3a;
+    overflow: hidden;
+}
+
+
