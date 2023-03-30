@@ -1,6 +1,6 @@
 .table{
 
-    background-color: black;
+    /* background-color: black; */
     height: 410px;
     width: 600px;
 
@@ -30,4 +30,5 @@
     border-style: solid;
     position: absolute;
     left: 300px;
+    border: none;
 }

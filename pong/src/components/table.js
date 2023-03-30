@@ -22,7 +22,7 @@ function Table() {
         //establece los valores después del renderizado
         setPlayer1top(20);   
         setPlayer2top(300);   
-        setPlayer2Left(tableRef.current.offsetWidth - 25);
+        setPlayer2Left(tableRef.current.offsetWidth - 43);
         
         }
     }, [tableRef]);
@@ -41,7 +41,7 @@ function Table() {
                 setPlayer2top(player2top - 20);
                 if (player2top <= 20) {setmove(0)};
             }
-        }, 40);
+        }, 100);
 
         return () => {
         clearTimeout(timerId);
@@ -50,21 +50,22 @@ function Table() {
 
 
 //-----------------jugador 1-----------------------
-    //cuando renderise crea un manejador del evento de la tecla
+    //crea un manejador del evento de la tecla
+    const handleKeyPress = (e) => {
+        let tecla = e.key.toUpperCase();
+        if (tecla === "ARROWDOWN" && player1top < tableRef.current.offsetHeight - 110) { 
+        setPlayer1top(player1top + 20) }
+        if (tecla === "ARROWUP" && player1top > 10) { 
+        setPlayer1top(player1top - 20) }
+        
+    }
+    //al renderizar
     useEffect(() => {
-        const handleKeyPress = (e) => {
-            let tecla = e.key.toUpperCase();
-            if (tecla === "ARROWDOWN" && player1top < tableRef.current.offsetHeight - 110) { 
-            setPlayer1top(player1top + 20) }
-            if (tecla === "ARROWUP" && player1top > 10) { 
-            setPlayer1top(player1top - 20) }
-            
-        }
         //se crea el evento
         document.addEventListener("keydown", handleKeyPress); //se llama el manejador
         //se elimina el evento
         return () => document.removeEventListener("keydown", handleKeyPress); 
-    }, [player1top]);
+    });
 
 
 //----------------- ball ---------------------------    
@@ -100,37 +101,46 @@ function Table() {
         else if (top+25  >= refH && est === 2) {dispatch({"estado": 3})}
         else if (top     <= 5    && est === 3) {dispatch({"estado": 2})}
         else if (top     <= 5    && est === 1) {dispatch({"estado": 0})}
-        else if (left+25 >= refW && est === 0 && (top + 25 < player2top || top > player2top + 100)) {setP1score(p1score + 1); dispatch({"estado": 2})} //point to p1
-        else if (left+25 >= refW && est === 1 && (top + 25 < player2top || top > player2top + 100)) {setP1score(p1score + 1); dispatch({"estado": 3})} //point to p1 
-        else if (left+65 >= refW && est === 0 && ((top > player2top && top < player2top + 100) || (top+25 > player2top && top+25 < player2top + 100))) {dispatch({"estado": 2})} 
-        else if (left+65 >= refW && est === 1 && ((top > player2top && top < player2top + 100) || (top+25 > player2top && top+25 < player2top + 100))) {dispatch({"estado": 3})}  
+        else if (left+25 >= refW && est === 0 && (top + 25 < player2top || top > player2top + 100)) {colorRed(); setP1score(p1score + 1); dispatch({"estado": 2})} //point to p1
+        else if (left+25 >= refW && est === 1 && (top + 25 < player2top || top > player2top + 100)) {colorRed(); setP1score(p1score + 1); dispatch({"estado": 3})} //point to p1 
+        else if (left+85 >= refW && est === 0 && ((top > player2top && top < player2top + 100) || (top+25 > player2top && top+25 < player2top + 100))) {dispatch({"estado": 2})} 
+        else if (left+85 >= refW && est === 1 && ((top > player2top && top < player2top + 100) || (top+25 > player2top && top+25 < player2top + 100))) {dispatch({"estado": 3})}  
         
-        else if (left    <= 5    && est === 3 && (top + 25 < player1top || top > player1top + 100)) {setP2score(p2score + 1); dispatch({"estado": 1})} //point to p2
-        else if (left    <= 5    && est === 2 && (top + 25 < player1top || top > player1top + 100)) {setP2score(p2score + 1); dispatch({"estado": 0})} //point to p2
-        else if (left    <= 25    && est === 3 && ((top > player1top && top < player1top + 100) || (top+25 > player1top && top+25 < player1top + 100))) {dispatch({"estado": 1})}
-        else if (left    <= 25    && est === 2 && ((top > player1top && top < player1top + 100) || (top+25 > player1top && top+25 < player1top + 100))) {dispatch({"estado": 0})} 
+        else if (left    <= 5    && est === 3 && (top + 25 < player1top || top > player1top + 100)) {colorRed(); setP2score(p2score + 1); dispatch({"estado": 1})} //point to p2
+        else if (left    <= 5    && est === 2 && (top + 25 < player1top || top > player1top + 100)) {colorRed(); setP2score(p2score + 1); dispatch({"estado": 0})} //point to p2
+        else if (left    <= 65    && est === 3 && ((top > player1top && top < player1top + 100) || (top+25 > player1top && top+25 < player1top + 100))) {dispatch({"estado": 1})}
+        else if (left    <= 65    && est === 2 && ((top > player1top && top < player1top + 100) || (top+25 > player1top && top+25 < player1top + 100))) {dispatch({"estado": 0})} 
         else{dispatch({"estado": est})}
     }
 
     useEffect(() => {
-        const timerBall = setTimeout(()=>mover(ballState), 40);
+        const timerBall = setTimeout(()=>mover(ballState), 40); //velocidad
         return () => {clearTimeout(timerBall);};
     });
 
 //-----------------puntajes--------------------------------
     const [p1score, setP1score] = useState(0);
     const [p2score, setP2score] = useState(0);
+//---------------------------------------------------------
+    const [color, setColor] = useState("black");
+    function colorRed() {   
+        setColor("red");
+        let timer
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          setColor("black");
+        }, 100);  
+    }
 
 
-
-//---------------------------------------------------
+//---------------------------------------------------------
     return (
         <>
             
-            <div className="table" id="table" ref={tableRef}>
+            <div className="table" id="table" ref={tableRef} style= {{backgroundColor:`${color}`}}>
                 <div className="line"></div>
                 <Ball top={ballState.top} left={ballState.left} />
-                <Player top={player1top} left={5} />
+                <Player top={player1top} left={26} />
                 <Player top={player2top} left={player2Left} />
             </div>
 
