@@ -4,20 +4,15 @@ import { useState} from "react";
 
 
 function Card({elemento_del_array, propIndice_del_arrayCard, propFunBorrarElementocard}) {
- 
+
+//----------------se crean los estados---------------------------
     const [mostrarModal, setmostrarModal] = useState(false);
     const [elementArr, setElementArr] = useState(elemento_del_array);
-    const funmostrarModal = () =>{
-        setmostrarModal(true);
-        
-    };
-    const funOcultar = ()=>{
-        setmostrarModal(false);
-    };
 
-    const handleEditElement = (updatedElement) => {
-        setElementArr(updatedElement);
-    }
+//--------------funciones y manejadores---------------------------
+    const funmostrarModal = () =>{ setmostrarModal(true);  };
+    const funOcultar      = () =>{ setmostrarModal(false); };
+    const handleEditElement = (updatedElement) => { setElementArr(updatedElement);}
 
     return (
         <>
