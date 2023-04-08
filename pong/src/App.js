@@ -1,9 +1,8 @@
 
-import "./styles/App.css";
 import Table from "./components/table.js";
 
 
-function App() {
+function AppPong() {
     
     return (
         <div className="App">
@@ -12,4 +11,4 @@ function App() {
     );
 }
 
-export default App;
+export default AppPong;

@@ -10,8 +10,6 @@ function Player ({top, left}) {
             style= {{top:`${top}px`, left:`${left}px`}}
             
         >
-
-
         </div>
     );
 }

@@ -1,34 +1,35 @@
 .table{
 
     /* background-color: black; */
-    height: 410px;
-    width: 600px;
+    height: calc(var(--value)*0.6833);
+    width: var(--value);
+    max-width: 720px;
 
 }
-.puntaje1{
+.puntaje{
     padding: 10px;
     margin-top: 15px;
     border-style: solid;
-    width: 250px;
-    font-size: 22px;
+    width: calc(var(--value)*0.4);
+    font-size: calc(var(--value)*0.035);;
 }
-.puntaje2{
-    padding: 10px;
-    margin-top: 15px;
-    border-style: solid;
-    width: 250px;
-    font-size: 22px;
-    position: absolute;
-    left: 325px;
-    top:409px
+
+.marcador{
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: var(--value);
+    max-width: 720px;
+
 }
 
 .line{
     width: 1px;
-    height: 400px;
+    height: calc(var(--value)*0.6833);
     background-color: white;
     border-style: solid;
     position: absolute;
-    left: 300px;
+    left: calc(var(--value)*0.5);
     border: none;
 }
