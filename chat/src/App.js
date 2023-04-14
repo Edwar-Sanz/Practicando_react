@@ -82,6 +82,7 @@ function App() {
 
 //--------------------------------------------------------------   
     return (
+        <div style={{display: "flex"}}> 
         <div className="App">
             <div className="top" >
                 {
@@ -106,6 +107,7 @@ function App() {
                     refInput = {refForm}
                 />
             </div>
+        </div>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 
 import Grid from "@mui/material/Grid";
 
-function Home() {
+function Contact() {
   return (
     <Grid container justifyContent={"center"}>
       <Grid item
@@ -10,7 +10,7 @@ function Home() {
         padding={"0px 24px"}
         textAlign={"center"}
       >
-        <h1>Saludos home</h1>
+        <h1>Saludos contact</h1>
       </Grid>
       <Grid item
         xs={10}
@@ -25,4 +25,4 @@ function Home() {
     </Grid>
   );
 }
-export default Home;
+export default Contact;

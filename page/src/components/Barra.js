@@ -49,20 +49,20 @@ function DrawerAppBar({ children }) {
     <Box
       sx={{
         display: "flex",
-        height: "7vw",
+        height: "3vw",
         width: "100%",
-        marginTop: { xs: "25vw", sm: "15vw" }
+        marginTop: { xs: "25vw", sm: "15vw", md: "9vw" }
         
       }}
     >
       <AppBar
         component="nav"
         position="fixed"
-        sx={{ height: "7vw", width: "100%" }}
+        sx={{ height: "3vw", width: "100%" }}
         
       >
         <Toolbar
-          sx={{ height: "7vw", width: "100%", backgroundColor: "#2c3e50" }}
+          sx={{ height: "3vw", width: "100%", backgroundColor: "#2c3e50" }}
         >
           <IconButton
             color="inherit"
@@ -80,7 +80,7 @@ function DrawerAppBar({ children }) {
               gridTemplateColumns: "repeat(4, 1fr)",
               height: "100%",
               width: "100%",
-              padding: "0px 0px 0px 0px"
+              
             }}
           >
             <Button sx={{ ...buttonStyles, backgroundColor: activeButton === "home" ? "#16a085" : "" }} component={Link} to="/" onClick={() => handleActiveButton("home")}>

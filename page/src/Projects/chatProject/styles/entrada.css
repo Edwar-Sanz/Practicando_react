@@ -1,0 +1,41 @@
+#pregunta{
+    background-color: white;
+    width: 80%;
+    height: 90%;
+    border: solid;
+    border-radius: 5px;
+    margin-right: 5px;
+    padding-left: 8px;
+    border-width: 1px;
+    border-color: white;
+    font-size: 16px;
+    font-weight: bolder;
+
+}
+/* #mensaje:hover{background-color: rgb(230, 230, 230);} */
+
+#boton{
+    width: 15%;
+    height: 90%;  
+    background-color: #22e1bb;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #22e1bb;
+    border-radius: 10px;
+}
+#boton:hover{background-color: #16a085; border-color: #16a085;}
+
+#formChat{
+
+    background-color:whitesmoke;
+    height: 90%;
+    width: 99%;
+    border: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: stretch;
+    justify-content: center;
+    text-align: center;
+  
+}
