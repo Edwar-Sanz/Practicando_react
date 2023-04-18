@@ -39,7 +39,7 @@ function DrawerAppBar({ children }) {
     }
   };
 
-  const [activeButton, setActiveButton] = React.useState("");
+  const [activeButton, setActiveButton] = React.useState("/");
   const handleActiveButton = (button) => {
     setActiveButton(button);
   };

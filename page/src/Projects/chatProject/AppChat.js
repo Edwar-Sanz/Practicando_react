@@ -130,13 +130,19 @@ function AppChat() {
     textAlign: "center",
     backgroundColor: "#fff",
     padding: "24px 24px",
-    xs: 10,
+    
+  };
+  const stiles = {
+    textAlign: "justify",
+    backgroundColor: "#fff",
+    padding: "12px 12px",
+    margin: "8px"
   };
 
   //--------------------------------------------------------------
   return (
     <Grid container justifyContent={"center"}>
-      <Grid item sx={gridItemProp}>
+      <Grid item sx={gridItemProp} xs={10} sm={10}  md={5}>
         <div style={{ display: "flex"}}>
           <div className="AppChat">
             <div className="top">
@@ -157,10 +163,13 @@ function AppChat() {
           </div>
         </div>
       </Grid>
-      <Grid item sx={gridItemProp}>
-        <div>
-          <h3>hola</h3>
-        </div>
+      <Grid item sx={gridItemProp} xs={10} sm={10}  md={5}>
+        <h4 style={stiles}> ChatBot Personal </h4>
+        <p style={stiles}>Este proyecto trata de crear un chatbot utilizando la API de OpenAI, para generar respuestas personalizadas, la pregunta es procesada por la inteligencia artificial que se resuelve con la respuesta de la API, los datos devueltos se utilizan para encontrar dentro de una matriz que tiene las preguntas y respuestas predeterminadas, la coincidencia más acertada con la entrada. </p>
+
+        <p style={stiles}>Por ejemplo,  las preguntas, ¿Cómo te llamas?, ¿Cuál es tu nombre?,  ¿Nombre?, etc deberían generar la misma respuesta. En caso de no encontrar ninguna coincidencia, se mostrará un mensaje preestablecido.</p>
+
+        <p style={stiles}>Este proyecto me fue útil para conocer la API de OpenAI y pensar en diferentes formas de utilizar la inteligencia artificial y la generación de respuestas a partir de mensajes. Este chat fue creado solo con fines didácticos pero es un buen punto de partida para crear un chatbot o asistente virtual más avanzado  para alguna institución o empresa.</p>
       </Grid>
     </Grid>
   );

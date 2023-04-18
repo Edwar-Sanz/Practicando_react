@@ -10,7 +10,11 @@ function Home() {
         padding={"0px 24px"}
         textAlign={"center"}
       >
-        <h1>Saludos home</h1>
+        <h1 style={{marginTop: "100px", fontSize: "48px"}}>
+
+          Bienvenido, Soy Edwar.
+          
+        </h1>
       </Grid>
       <Grid item
         xs={10}
@@ -20,7 +24,8 @@ function Home() {
         padding={"0px 24px"}
         textAlign={"center"}
       >
-        <p>asdasdsad</p>
+        <br/>
+        <h2 style={{marginBottom: "100px"}}> Apasionado de la tecnología y las inversiones. </h2>
       </Grid>
     </Grid>
   );

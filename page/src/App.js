@@ -8,6 +8,7 @@ import Appcalculator from "./Projects/calculator/AppCalculator.js";
 import AppChat from "./Projects/chatProject/AppChat.js";
 import AppNotes from "./Projects/lista_tareas/AppNotes.js";
 import Contact from "./components/contact.js";
+import AppTriki from "./Projects/triki/AppTriki.js";
 
 const router = createBrowserRouter(
   [
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
     { path: "/portfolio/calculator", element:<ButtonAppBar children={<Appcalculator/>} />},
     { path: "/portfolio/chat", element:<ButtonAppBar children={<AppChat/>} />},
     { path: "/portfolio/notes", element:<ButtonAppBar children={<AppNotes/>} />},
+    { path: "/portfolio/triki", element:<ButtonAppBar children={<AppTriki/>} />},
   ]
 );
 
