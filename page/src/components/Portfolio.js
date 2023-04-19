@@ -7,41 +7,45 @@ import CardContent from '@mui/material/CardContent';
 function Portfolio() {
 
   const gridItemProp = {
+    display:"flex",
+    justifyContent:"center",
     textAlign:"center",
     backgroundColor:"#fff",
     padding:"24px 24px",
-    xs:10
+    
     
   }
-
+ 
+  //sx = { xs:11 sm:6 md:4 lg:4 }
   return (
+    
     <Grid container justifyContent={"center"} >
-      <Grid item sx={gridItemProp}>
       {/* --------pong---------------- */}
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <ActionAreaCard
+          height={"170"}
           to={"/portfolio/pong"}
-          height={200}
           image={require("../images/pong.png")}
-          title={"Pong"}
+          title={"Pong Game"}
           description={"Una versión del clásico juego de Pong creado en react JS"}
         />
       </Grid>
       {/* ---------chat---------------- */}
-      <Grid item sx={gridItemProp}>
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <ActionAreaCard
+          height={"170"}
           to={"/portfolio/chat"}
-          height={200}
           image={require("../images/chat.png")}
-          title={"Chat"}
+          title={"Chatbot Personal"}
           description={"Chatbot que usa la API de OpenAI para generar respuestas personalizadas a partir de un mensaje dado."}
         />
       </Grid>
       {/* ---------pagina trading---------------- */}
-      <Grid item sx={gridItemProp}>
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <Link underline="none"  target="_blank" rel="noreferrer" href="https://trading.edwarsanz.com/">
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia
-            sx={{ height: 140 }}
+            sx={{ height: 170 }}
             image={require("../images/trading.png")}
             title="Web Trading"
           />
@@ -57,36 +61,40 @@ function Portfolio() {
         </Link>
       </Grid>
       {/* ---------lista de tareas----------- */}
-      <Grid item sx={gridItemProp}>
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <ActionAreaCard
+          height={"170"}
           to={"/portfolio/notes"}
-          height={200}
           image={require("../images/cards.png")}
           title={"Notes App"}
           description={"Una aplicación que permite crear, editar y eliminar notas"}
         />
       </Grid>
-      <Grid item sx={gridItemProp}>
+      
+      {/* ---------triki----------- */}
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <ActionAreaCard
+          height={"170"}
           to={"/portfolio/triki"}
-          height={200}
           image={require("../images/triki.png")}
-          title={"triki"}
-          description={"triki"}
+          title={"Tres en línea"}
+          description={"Una versión del clásico juego de Tres en línea creado en react JS"}
         />
       </Grid>
       {/* --------calculator----------- */}
-      <Grid item sx={gridItemProp}>
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1} >
+        
         <ActionAreaCard
+          height={"170"}
           to={"/portfolio/calculator"}
-          height={200}
           image={require("../images/calculator.png")}
           title={"Calculator"}
-          description={"Una calculadora"}
+          description={"Una calculadora que permite hacer todas las operaciones básicas."}
         />
       </Grid>
-      {/* --------triki----------- */}
+      {/* ------------------- */}
     </Grid>
+    
   );
 }
 export default Portfolio;

@@ -25,9 +25,14 @@ function Appcalculator() {
     textAlign: "center",
     backgroundColor: "#fff",
     padding: "24px 24px",
-    xs: 10,
+    
   };
-
+  const stiles = {
+    textAlign: "justify",
+    backgroundColor: "#fff",
+    padding: "12px 12px",
+    margin: "8px"
+  };
   return (
     <Grid container justifyContent={"center"}>
       <Grid item sx={gridItemProp}>
@@ -42,9 +47,11 @@ function Appcalculator() {
           </div>
         </div>
       </Grid>
-      <Grid item sx={gridItemProp}>
+      <Grid item sx={gridItemProp}  xs={ 10} sm={10} md={5}>
         <div>
-          <h3>hola</h3>
+        <h4 style={stiles}> Calculator </h4>
+        <p style={stiles}>Este proyecto tiene como objetivo crear una calculadora completamente funcional que permite borrar los cálculos haciendo clic en la pantalla. Además, en caso de que se realice una operación no válida, la pantalla también se borrará automáticamente.</p> 
+        <p style={stiles}>Se trata del primer proyecto que he desarrollado utilizando ReactJS.  Me ha permitido adentrarme en el mundo de React, aprender cómo funcionan los componentes y comprender cómo se realiza el renderizado de la aplicación.</p>
         </div>
       </Grid>
     </Grid>

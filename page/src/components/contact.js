@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button, Tooltip } from "@mui/material";
 
 function Contact() {
@@ -41,6 +42,28 @@ function Contact() {
               href="https://www.linkedin.com/in/edwarsanz/"
             >
               <LinkedInIcon sx={{ fontSize: 60, color:"#16a085" }}  /> <p style={{fontSize:"30px", textTransform:"capitalize" , color:"#2c3e50"}}> &nbsp; LinkedIn </p>
+            </Button>
+          </Tooltip>
+        </h1>
+      </Grid>
+      <Grid
+        item
+        xs={10}
+        backgroundColor={"#fff"}
+        padding={"0px 24px"}
+        textAlign={"start"}
+      >
+        <h1 style={{ margin: "30px"}}>
+         
+          <Tooltip arrow title="Ir a GitHub" placement="right" followCursor>
+            <Button
+              fontSize="100px"
+              underline="none"
+              target="_blank"
+              rel="noreferrer"
+              href="https://github.com/Edwar-Sanz"
+            >
+              <GitHubIcon sx={{ fontSize: 60, color:"#16a085" }}  /> <p style={{fontSize:"30px", textTransform:"capitalize" , color:"#2c3e50"}}> &nbsp; GitHub </p>
             </Button>
           </Tooltip>
         </h1>
