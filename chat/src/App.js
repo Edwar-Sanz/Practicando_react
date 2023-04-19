@@ -3,7 +3,7 @@ import Entrada from './components/entrada.js';
 import Dialogo from './components/dialogo.js';
 import { useState, useRef} from 'react';
 
-const apiKey = "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";
+const apiKey = "aqui va la key";
 
 const callGpt = async (mensaje)=>{
     return fetch("https://api.openai.com/v1/completions", {
