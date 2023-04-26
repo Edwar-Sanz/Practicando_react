@@ -103,10 +103,7 @@ export default function Profile() {
 
 //---------------------------------------------------------
 
-
 //mismo ejemplo con estado compartido:
-
-
 
 import { useState } from 'react'; 
 
