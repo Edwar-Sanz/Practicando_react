@@ -13,7 +13,7 @@
   height: calc(23px + 2vw);
   background-color: #22e1bb;
   font-weight:bolder;
-  font-size: 26px;
+  font-size: calc(16px + 2vw);
   color: black;
   border-radius: 50%;
   user-select: none; 
@@ -59,14 +59,14 @@
   grid-row-end: 9;
   grid-column-start: 11;
   grid-column-end: 16;
-  padding-top: 25px;
+  padding-top: calc(12px + 2vw);
 }
 #smalltom {
   grid-row-start: 5;
   grid-row-end: 8;
   grid-column-start: 7;
   grid-column-end: 11;
-  padding-top: 12px;
+  padding-top: calc(2px + 2vw);
   padding-left: 15px;
 
 }
@@ -75,7 +75,7 @@
   grid-row-end: 12;
   grid-column-start: 7;
   grid-column-end: 11;
-  padding-top: 20px;
+  padding-top: calc(8px + 2vw);
 }
 #splash {
   grid-row-start: 2;

@@ -1,4 +1,4 @@
-import './App.css';
+import './AppBateria.css';
 import { useEffect } from 'react';
 
 const bass = new Audio(require("./media/bass.mp3"));
