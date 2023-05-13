@@ -1,0 +1,85 @@
+#AppBateria {
+  background-color: antiquewhite;
+  width: 40vw;
+  height: 33vw;
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+}
+
+#bateriaimg {
+  position:absolute;
+  width: 40vw;
+  height: 33vw;
+  z-index: 1;
+}
+.txtdiv{
+  text-align: center;
+  width: calc(14px + 2vw);
+  height: calc(14px + 2vw);
+  background-color: #22e1bb;
+  font-weight:500;
+  font-size: calc(8px + 2vw);
+  color: black;
+  border-radius: 50%;
+  user-select: none; 
+}
+
+#bass, #splash, #floortom, #hihat, #mediumtom, #smalltom, #snare, #splash { 
+  background-color: none;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+
+#bass { 
+  grid-row-start: 12;
+  grid-row-end: 16;
+  grid-column-start: 8;
+  grid-column-end: 15;
+  padding-left: 25px;
+}
+#floortom {
+  grid-row-start: 9;
+  grid-row-end: 14;
+  grid-column-start: 15;
+  grid-column-end: 20;
+}
+#hihat    {
+  grid-row-start: 6;
+  grid-row-end: 17;
+  grid-column-start: 4;
+  grid-column-end: 7;
+  padding-top: 15px;
+}
+#mediumtom {
+  grid-row-start: 4;
+  grid-row-end: 9;
+  grid-column-start: 11;
+  grid-column-end: 16;
+  padding-top: calc(8px + 2vw);
+}
+#smalltom {
+  grid-row-start: 5;
+  grid-row-end: 8;
+  grid-column-start: 7;
+  grid-column-end: 11;
+  padding-top: calc(2px + 1.3vw);
+  padding-left: 15px;
+
+}
+#snare {
+  grid-row-start: 8;
+  grid-row-end: 12;
+  grid-column-start: 7;
+  grid-column-end: 11;
+  padding-top: calc(8px + 1.3vw);
+}
+#splash {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  grid-column-start: 9;
+  grid-column-end: 14;
+}
