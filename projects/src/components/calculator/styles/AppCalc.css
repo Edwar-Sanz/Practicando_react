@@ -1,5 +1,5 @@
 
-.App{
+.AppCalc{
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -13,7 +13,7 @@
 .calc_container{
 
   background-color: #16a085;
-  width: calc(15vh + 20vw);
+  width: calc(15vh + 20vw + 5px);
   height: calc(30vh + 20vw);
 
   display: flex;

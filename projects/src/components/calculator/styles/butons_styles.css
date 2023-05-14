@@ -1,4 +1,4 @@
-.boton{
+.botonCalc{
 
     width: calc(3vh + 4vw);
     height: calc(3vh + 4vw);
@@ -16,6 +16,6 @@
     
 }
 
-.boton:hover {
+.botonCalc:hover {
     background-color: #107360;
 }

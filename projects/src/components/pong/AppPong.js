@@ -11,7 +11,7 @@ function AppPong() {
   return (
     <Grid container justifyContent={"center"}>
       <Grid item sx={gridItemProp} xs={10} sm={10}  md={5}>
-        <div className="App">
+        <div className="AppPong">
           <Table />
         </div>
       </Grid>

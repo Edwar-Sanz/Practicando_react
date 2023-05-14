@@ -1,4 +1,4 @@
-import './App.css';
+import './Apphooks.css';
 
 //---------------------------imports useReducer------------------------------------
 import { Counter } from './components_useReducer/counterReducer';
@@ -19,7 +19,7 @@ import { Notes } from './components_useReducer/notesReducer';
 
 
 //-------------------------------------------------------------------------
-function App() {
+function AppHooks() {
   
   return (
     
@@ -37,7 +37,6 @@ function App() {
         <hr/>
         <CounterRef/>
         <DoomRef/>
-        <div style={{marginBottom:"300px"}}/>
       </div>
   );
 }
@@ -45,4 +44,4 @@ function App() {
 //---------------------------------------------------------------------
 
 
-export default App;
+export default AppHooks;

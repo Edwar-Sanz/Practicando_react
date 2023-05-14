@@ -133,7 +133,7 @@ function Appage() {
     <Grid container justifyContent={"center"}>
       <Grid item sx={gridItemProp} xs={ 10} sm={10} md={6} >
         <h3>Calcular Edad</h3>
-        <div className="App" style={{padding:"15px", maxWidth:"700px"}}>
+        <div className="AppAge" style={{padding:"15px", maxWidth:"700px"}}>
           <BasicSelect getBorn={getBorn} />
           <div style={{marginTop:"50px", fontSize:"22px"}} >Su edad es de{date}</div>
         </div>

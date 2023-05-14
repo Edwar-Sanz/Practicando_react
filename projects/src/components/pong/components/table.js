@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useReducer} from 'react';
+import { useState, useRef, useEffect, useReducer, useCallback} from 'react';
 import "../styles/table.css";
 import Player from "./player.js";
 import Ball from "./ball.js";
@@ -16,7 +16,9 @@ function Table() {
     const [player2Left, setPlayer2Left] = useState(0);
     const [baseWidth, setBaseWidth] = useState(600);
     const [move, setmove] = useState(1);
-    
+    //-----------------puntajes--------------------------------
+    const [p1score, setP1score] = useState(0);
+    const [p2score, setP2score] = useState(0);
     
     // cuando renderise, verifica si ya se puede acceder a elemento
     //elemento === truthy
@@ -26,18 +28,26 @@ function Table() {
         setBaseWidth(tableRef.current.offsetWidth);
         setPlayer1top(baseWidth*0.2);   
         setPlayer2top(baseWidth*0.2);   
-        setPlayer2Left( baseWidth - (baseWidth*0.09));      
+        setPlayer2Left( baseWidth - (baseWidth*0.095));      
         }
     }, [tableRef, baseWidth]);
 
-    useEffect(() => { // actualiza cuando se cambia de tamaño a la pantalla
-        if (tableRef.current.offsetWidth !== baseWidth) {    
-        setBaseWidth(tableRef.current.offsetWidth);   
-        setPlayer2Left( baseWidth - (baseWidth*0.0716));      
+
+
+    //---------resize-------------------
+    const handleResize = useCallback(() => {
+        if (tableRef.current.offsetWidth !== baseWidth) {
+          setBaseWidth(tableRef.current.offsetWidth);
+          setPlayer2Left(baseWidth - (baseWidth*0.095));
         }
-    });
-    
+      }, [tableRef, baseWidth]);
       
+      useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        }
+      }, [handleResize]);
     
 
 //-----------------jugador 2-----------------------
@@ -64,21 +74,20 @@ function Table() {
 //-----------------jugador 1-----------------------
     //crea un manejador del evento de la tecla
     const handleKeyPress = (e) => {
-        let tecla = e.key.toUpperCase();
-        if (tecla === "ARROWDOWN" && player1top < tableRef.current.offsetHeight  - baseWidth*0.22) { 
-        setPlayer1top(player1top + baseWidth*0.03) }
-        if (tecla === "ARROWUP" && player1top > baseWidth*0.016) { 
-        setPlayer1top(player1top - baseWidth*0.03) }
-        
-    }
-    //al renderizar
-    useEffect(() => {
-        //se crea el evento
-        document.addEventListener("keydown", handleKeyPress); //se llama el manejador
-        //se elimina el evento
-        return () => document.removeEventListener("keydown", handleKeyPress); 
-    });
-
+      let tecla = e.key.toUpperCase();
+      if (tecla === "ARROWDOWN" && player1top < tableRef.current.offsetHeight  - baseWidth*0.22) { 
+      setPlayer1top(player1top + baseWidth*0.06) }
+      if (tecla === "ARROWUP" && player1top > baseWidth*0.016) { 
+      setPlayer1top(player1top - baseWidth*0.08) }
+      
+  }
+  //al renderizar
+  useEffect(() => {
+      //se crea el evento
+      document.addEventListener("keydown", handleKeyPress); //se llama el manejador
+      //se elimina el evento
+      return () => document.removeEventListener("keydown", handleKeyPress); 
+  });
 
 //----------------- ball ---------------------------    
     
@@ -103,47 +112,50 @@ function Table() {
     const [ballState, dispatch] = useReducer(reducerBall, ballInitialState);
     useEffect(() => {dispatch({"estado": 0});}, []);
 
-    function mover (ballState){
-        let refH      = tableRef.current.offsetHeight;
-        let refW      = baseWidth;
-        let est       = ballState.estado;
-        let top       = ballState.top;
-        let left      = ballState.left;
-        let ballRigth = left+(refW*0.03);
-        let ballBot   = top+(refW*0.05);
-        let largoP1   = player1top + (refW*0.1666);
-        let largoP2   = player2top + (refW*0.1666);
+    
+    const moveball = useCallback(() => { 
         
-
-        //--------------------------------------------
-        if      (ballBot  >= refH && est === 0) {dispatch({"estado": 1})}
-        else if (ballBot  >= refH && est === 2) {dispatch({"estado": 3})}
-        else if (top<= (refW*0.0083)    && est === 3) {dispatch({"estado": 2})}
-        else if (top<= (refW*0.0083)    && est === 1) {dispatch({"estado": 0})}
-
-        //--------------------------------------------
-        else if (ballRigth >=     refW && est === 0 && (ballBot   < player2top || top > largoP2)) {colorRed(); setP1score(p1score + 1); dispatch({"estado": 2})} //point a favor del p1
-        else if (ballRigth >=     refW && est === 1 && (ballBot   < player2top || top > largoP2)) {colorRed(); setP1score(p1score + 1); dispatch({"estado": 3})} //point a favor del p1
-        else if (left <= (refW*0.0083) && est === 3 && (ballRigth < player1top || top > largoP1)) {colorRed(); setP2score(p2score + 1); dispatch({"estado": 1})} //point to p2
-        else if (left <= (refW*0.0083) && est === 2 && (ballRigth < player1top || top > largoP1)) {colorRed(); setP2score(p2score + 1); dispatch({"estado": 0})} //point to p2
-
-        //--------------------------------------------
-        else if (ballRigth >= (refW*0.93)      && est === 0 && ((top > player2top && top < largoP2) || (ballBot > player2top && ballBot < largoP2))) {dispatch({"estado": 2})} // cuando llega left del p2 y esta en su largo rebota
-        else if (ballRigth >= (refW*0.93)      && est === 1 && ((top > player2top && top < largoP2) || (ballBot > player2top && ballBot < largoP2))) {dispatch({"estado": 3})} // cuando llega left del p2 y esta en su largo rebota
-        else if (left      <= (refW*0.09)   && est === 3 && ((top > player1top && top < largoP1) || (ballBot > player1top && ballBot < largoP1))) {dispatch({"estado": 1})}
-        else if (left      <= (refW*0.09)   && est === 2 && ((top > player1top && top < largoP1) || (ballBot > player1top && ballBot < largoP1))) {dispatch({"estado": 0})} 
-        //--------------------------------------------
-        else{dispatch({"estado": est})}
-    }
+        function mover (ballState){
+            let refH      = tableRef.current.offsetHeight;
+            let refW      = baseWidth;
+            let est       = ballState.estado;
+            let top       = ballState.top;
+            let left      = ballState.left;
+            let ballRigth = left+(refW*0.03);
+            let ballBot   = top+(refW*0.05);
+            let largoP1   = player1top + (refW*0.1666);
+            let largoP2   = player2top + (refW*0.1666);
+            
+    
+            //--------------------------------------------
+            if      (ballBot  >= refH && est === 0) {dispatch({"estado": 1})}
+            else if (ballBot  >= refH && est === 2) {dispatch({"estado": 3})}
+            else if (top<= (refW*0.0083)    && est === 3) {dispatch({"estado": 2})}
+            else if (top<= (refW*0.0083)    && est === 1) {dispatch({"estado": 0})}
+    
+            //--------------------------------------------
+            else if (ballRigth >=     refW && est === 0 && (ballBot   < player2top || top > largoP2)) {colorRed(); setP1score(p1score + 1); dispatch({"estado": 2})} //point a favor del p1
+            else if (ballRigth >=     refW && est === 1 && (ballBot   < player2top || top > largoP2)) {colorRed(); setP1score(p1score + 1); dispatch({"estado": 3})} //point a favor del p1
+            else if (left <= (refW*0.0083) && est === 3 && (ballRigth < player1top || top > largoP1)) {colorRed(); setP2score(p2score + 1); dispatch({"estado": 1})} //point to p2
+            else if (left <= (refW*0.0083) && est === 2 && (ballRigth < player1top || top > largoP1)) {colorRed(); setP2score(p2score + 1); dispatch({"estado": 0})} //point to p2
+    
+            //--------------------------------------------
+            else if (ballRigth >= (refW*0.93)      && est === 0 && ((top > player2top && top < largoP2) || (ballBot > player2top && ballBot < largoP2))) {dispatch({"estado": 2})} // cuando llega left del p2 y esta en su largo rebota
+            else if (ballRigth >= (refW*0.93)      && est === 1 && ((top > player2top && top < largoP2) || (ballBot > player2top && ballBot < largoP2))) {dispatch({"estado": 3})} // cuando llega left del p2 y esta en su largo rebota
+            else if (left      <= (refW*0.09)   && est === 3 && ((top > player1top && top < largoP1) || (ballBot > player1top && ballBot < largoP1))) {dispatch({"estado": 1})}
+            else if (left      <= (refW*0.09)   && est === 2 && ((top > player1top && top < largoP1) || (ballBot > player1top && ballBot < largoP1))) {dispatch({"estado": 0})} 
+            //--------------------------------------------
+            else{dispatch({"estado": est})}
+        }
+        mover(ballState)
+    }, [ballState, baseWidth, p1score, p2score, player1top, player2top]);
 
     useEffect(() => {
-        const timerBall = setTimeout(()=>mover(ballState), 30); //velocidad
+        const timerBall = setTimeout(()=>moveball(), 30); //velocidad
         return () => {clearTimeout(timerBall);};
     });
 
-//-----------------puntajes--------------------------------
-    const [p1score, setP1score] = useState(0);
-    const [p2score, setP2score] = useState(0);
+
 //---------------------------------------------------------
     const [color, setColor] = useState("black");
     function colorRed() {   

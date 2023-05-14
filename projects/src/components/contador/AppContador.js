@@ -1,9 +1,9 @@
-import './estilos/App.css';
+import './estilos/AppCounter.css';
 import Contador from './components/contador_clic';
 import Boton from './components/boton.js';
 import {useState} from "react";
 
-function App() {
+function AppCounter() {
 
 	const [numClics, setNumClics] = useState(0);
 
@@ -15,7 +15,7 @@ function App() {
 	};
 
 	return (
-	<div className="App">
+	<div className="AppCounter">
 		
 		<Contador
 			clicks={numClics}
@@ -36,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppCounter;

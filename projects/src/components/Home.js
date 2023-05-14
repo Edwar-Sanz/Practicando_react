@@ -30,14 +30,14 @@ function Home() {
     display:"flex",
     justifyContent:"center",
     textAlign:"center",
-    backgroundColor:"#fff",
+    backgroundColor:"gainsboro",
     padding:"24px 24px",
     //'&:hover': {backgroundColor: 'whitesmoke'}
   }
  
   return (
     
-    <Grid container justifyContent={"center"} >
+    <Grid container justifyContent={"center"} gap={2} >
       {/* --------pong---------------- */}
       <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <CardBase
@@ -66,6 +66,16 @@ function Home() {
           target={"_self"}
           title={"Notes App"}
           description={"Una aplicación que permite crear, editar y eliminar notas."}
+        />
+      </Grid>
+      {/* ---------lista de tareas----------- */}
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
+        <CardBase
+          gridItemProp={gridItemProp}
+          link={"/portfolio/part"}
+          target={"_self"}
+          title={"Close Part"}
+          description={"Cerrar parte de una operacion"}
         />
       </Grid>
       
@@ -107,6 +117,16 @@ function Home() {
           target={"_self"}
           title={"Calculator"}
           description={"Una calculadora que permite hacer todas las operaciones básicas."}
+        />
+      </Grid>
+      {/* --------hooks----------- */}
+      <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1} >
+        <CardBase
+          gridItemProp={gridItemProp}
+          link={"/portfolio/hooks"}
+          target={"_self"}
+          title={"Practice Hooks"}
+          description={"Notas y practicas de los hooks."}
         />
       </Grid>
       {/* ------------------- */}

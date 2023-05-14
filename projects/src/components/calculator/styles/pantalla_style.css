@@ -1,8 +1,8 @@
 .pantalla_div{
-  margin-top: calc(12px + 1vw);
-  margin-bottom: calc(12px + 1vw);
-  width: 90%;
-  height: 20%;
+  margin-top: calc(10px + 1vw);
+  margin-bottom: calc(10px + 1vw);
+  width: 75%;
+  height: calc(0.5vh + 3vw);
   background-color: darkgray;
   display: flex;
   justify-content: flex-end;

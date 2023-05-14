@@ -1,18 +1,21 @@
-import "./styles/App.css";
+import "./styles/AppCalc.css";
 import Pantalla from "./components/pantalla.js";
 import Boton from "./components/boton.js";
 import { useState } from "react";
 import Grid from "@mui/material/Grid";
+import { create, all } from 'mathjs'
 
 const buttons = [7, 8, 9, "/", 4, 5, 6, "*", 3, 2, 1, "-", 0, ".", "=", "+"];
 
 function Appcalculator() {
   const [Valor, setValor] = useState("");
 
-  const agregarInput = (item) => {
+  const math = create(all)
+
+const agregarInput = (item) => {
     if (item === "=") {
       try {
-        setValor(eval(Valor).toFixed(1));
+        setValor(math.evaluate(Valor).toFixed(1));
       } catch {
         setValor("");
       }
@@ -31,7 +34,7 @@ function Appcalculator() {
   return (
     <Grid container justifyContent={"center"}>
       <Grid item sx={gridItemProp} xs={ 10} sm={10} md={5} >
-        <div className="App">
+        <div className="AppCalc">
           <div className="calc_container">
             <Pantalla value={Valor} funClear={() => setValor("")} />
             {buttons.map((item) => {
