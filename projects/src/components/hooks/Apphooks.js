@@ -15,8 +15,12 @@ import { OtherEffect } from './components_useEffect/otherEffect';
 import { CounterRef } from './components_useRef/ref';
 import { DoomRef } from './components_useRef/otherRef';
 import { Notes } from './components_useReducer/notesReducer';
-//-------------------------------------------------------------------------
 
+//----------------------------Imports Formik---------------------------------------
+import BasicFormik from './formik/formikExample';
+import OtroFormik from './formik/otroFormik';
+import YupAndFormik from './formik/yupAndFormik';
+import WithMaterialUI from './formik/formikAndMaterial';
 
 //-------------------------------------------------------------------------
 function AppHooks() {
@@ -37,6 +41,11 @@ function AppHooks() {
         <hr/>
         <CounterRef/>
         <DoomRef/>
+        <hr/>
+        <BasicFormik/>
+        <OtroFormik/>
+        <YupAndFormik/>
+        <WithMaterialUI/>
       </div>
   );
 }

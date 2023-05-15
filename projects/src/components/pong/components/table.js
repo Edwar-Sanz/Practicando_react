@@ -72,23 +72,34 @@ function Table() {
 
 
 //-----------------jugador 1-----------------------
-    //crea un manejador del evento de la tecla
-    const handleKeyPress = (e) => {
-      let tecla = e.key.toUpperCase();
-      if (tecla === "ARROWDOWN" && player1top < tableRef.current.offsetHeight  - baseWidth*0.22) { 
-      setPlayer1top(player1top + baseWidth*0.06) }
-      if (tecla === "ARROWUP" && player1top > baseWidth*0.016) { 
-      setPlayer1top(player1top - baseWidth*0.08) }
-      
-  }
-  //al renderizar
+//al renderizar
+const [isKeyDown, setIsKeyDown] = useState(false);
   useEffect(() => {
-      //se crea el evento
-      document.addEventListener("keydown", handleKeyPress); //se llama el manejador
-      //se elimina el evento
-      return () => document.removeEventListener("keydown", handleKeyPress); 
-  });
+    const handleKeyDown = (e) => {
+      let tecla = e.key.toUpperCase();
+      if (tecla === "ARROWDOWN" && player1top < tableRef.current.offsetHeight - baseWidth * 0.303 && !isKeyDown) {
+        setPlayer1top(player1top + baseWidth * 0.08);
+        setIsKeyDown(true);
+      }
+      if (tecla === "ARROWUP" && player1top > baseWidth * 0.0399 && !isKeyDown) {
+        setPlayer1top(player1top - baseWidth * 0.08);
+        setIsKeyDown(true);
+      }
+    };
 
+    const handleKeyUp = (e) => {
+      setIsKeyDown(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [player1top, isKeyDown, baseWidth]);
+  
 //----------------- ball ---------------------------    
     
     const ballInitialState = { "estado":0, "top": baseWidth*0.2, "left": baseWidth*0.2};
@@ -123,8 +134,8 @@ function Table() {
             let left      = ballState.left;
             let ballRigth = left+(refW*0.03);
             let ballBot   = top+(refW*0.05);
-            let largoP1   = player1top + (refW*0.1666);
-            let largoP2   = player2top + (refW*0.1666);
+            let largoP1   = player1top + (refW*0.17);
+            let largoP2   = player2top + (refW*0.17);
             
     
             //--------------------------------------------
