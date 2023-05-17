@@ -1,70 +1,38 @@
-import Grid from "@mui/material/Grid";
-import React from 'react';
-import { Formik} from 'formik';
-import * as yup from 'yup';
-import { Button, TextField } from '@mui/material';
+import React from "react";
+import * as yup from "yup";
+import { useState } from "react";
+import Formulario from "./formulario";
+import ResumenOperacion from "./resumenOperacion";
+import ResumenCierre from "./resumenCierre";
 
-const validationSchema = yup.object({
-  precioEntrada: yup
-    .number('Enter your email')
-    .typeError('Number')
-    .min(0, 'Very small')
-    .required('is required'),
-});
+//------validaciones que se repiten
+const validaciones = yup
+  .number()
+  .typeError("Debe ser un número")
+  .min(0, "Valor no puede ser negativo")
+  .required("Campo requerido")
 
-function Formulario(){
-  return (
-    <Formik
-      initialValues={{precioEntrada: ""}}
-      validationSchema={validationSchema}
-      onSubmit={
-        (values)=> console.log(values)
-
-      }
-    >
-    {
-      ({errors, touched, handleSubmit, values, handleChange, handleBlur}) => (
-        <form onSubmit={handleSubmit}>
-          <TextField
-            placeholder='Precio Entrada'
-            name="precioEntrada"
-            label="Precio Entrada"
-            value={values.precioEntrada}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            error={touched.precioEntrada && Boolean(errors.precioEntrada)}
-            helperText={touched.precioEntrada && Boolean(errors.precioEntrada)&& errors.precioEntrada}
-          />
-         
-          <Button color="primary" variant="contained"  type="submit">
-            Submit
-          </Button>
-        </form>
-        )
-      }     
-    </Formik>
-  );
-}
-
-function AppClose() {
   
-  const gridItemProp = {
-    textAlign: "center",
-    backgroundColor: "#fff",
-    padding: "24px 24px",
-    
-  };
+  const AppClose = () => {
+    //--------estados-------
+    const [maxUni, setMaxUni] = useState();
+
+    //-------inicializar el objeto validador------
+    const validationSchema = yup.object({
+      precioEntrada: validaciones,
+      unidadesActuales: validaciones,
+      precioActual: validaciones,
+      venderUnidades: validaciones.max(maxUni, `Unidades disponibles ${maxUni}`)
+    });
 
   return (
-    <Grid container justifyContent={"center"}>
-      <Grid item sx={gridItemProp} xs={ 10} sm={10} md={6} >
-        <div className="AppClosePart">
-          <h1>hola</h1>
-          <Formulario/>
-        </div>
-      </Grid>
-    </Grid>
+    <div style={{display:"flex"}}>
+      <Formulario validationSchema={validationSchema} setMaxUni={setMaxUni}/>
+      <ResumenOperacion/>
+      <ResumenCierre/>
+
+    </div>
   );
-}
+};
 
 export default AppClose;

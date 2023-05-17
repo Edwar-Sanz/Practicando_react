@@ -68,7 +68,7 @@ function Home() {
           description={"Una aplicación que permite crear, editar y eliminar notas."}
         />
       </Grid>
-      {/* ---------lista de tareas----------- */}
+      {/* ---------Close Part----------- */}
       <Grid item sx={gridItemProp} xs={10} sm={5.2} md={3.1} lg={3.1}>
         <CardBase
           gridItemProp={gridItemProp}
