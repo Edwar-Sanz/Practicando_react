@@ -1,10 +1,10 @@
 import { Formik} from "formik";
-import { Button, TextField} from "@mui/material";
+import { Button, TextField, Grid} from "@mui/material";
 
-function Formulario({validationSchema, setMaxUni}) {
+function Formulario({validationSchema, setMaxUni, handleForm}) {
   return (
-    <div >
-      <div style={{maxWidth:"400px", minWidth:"290px"}}>
+    
+      <Grid item xs={12} sm={3} md={4} lg={4}>
         <Formik
           initialValues={ 
             { precioEntrada: "", unidadesActuales: "",
@@ -12,11 +12,11 @@ function Formulario({validationSchema, setMaxUni}) {
             }
           }
           validationSchema={validationSchema}
-          onSubmit={(values) => {console.log(values);}}
+          onSubmit={(values) => {handleForm(values);}}
         >
         {
         ({errors, touched,handleSubmit, values, handleChange, handleBlur}) => (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} style={{width:"100%", height:"370px", display:"flex", flexDirection:"column", justifyContent:"space-around" }}>
             <TextField
               fullWidth
               placeholder="Precio Entrada"
@@ -69,8 +69,8 @@ function Formulario({validationSchema, setMaxUni}) {
           )
         }
         </Formik>
-      </div>
-    </div>
+      </Grid>
+    
   );
 }
 
