@@ -8,20 +8,20 @@ import { useState } from "react";
 function CardBase({link, target, title, description}){
   const [shadow, setShadow] = useState({"boxShadow": "none"})
   return(
-        <div onMouseEnter={()=>setShadow({"boxShadow": "rgba(0, 0, 0, 0.75) 0px 0px 15px 0px"})}  onMouseLeave={()=>setShadow({"boxShadow": "none"})} style={shadow}>
-        <Link underline="none"  target={target} rel="noreferrer" href={link} >
-        <Card sx={{ maxWidth:345, height: "100%", '&:hover': {backgroundColor: 'whitesmoke'}}}>
-          <CardContent sx={{'&:hover': {backgroundColor: 'whitesmoke'}}}>
-            <Typography gutterBottom variant="h5" component="div" >
-              {title}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" >
-              {description}
-            </Typography>
-          </CardContent>
-        </Card>
-        </Link>
-        </div>
+  <div onMouseEnter={()=>setShadow({"boxShadow": "rgba(0, 0, 0, 0.75) 0px 0px 15px 0px"})}  onMouseLeave={()=>setShadow({"boxShadow": "none"})} style={shadow}>
+    <Link underline="none"  target={target} rel="noreferrer" href={link} >
+      <Card sx={{ maxWidth:345, height: "100%", '&:hover': {backgroundColor: 'whitesmoke'}}}>
+        <CardContent sx={{'&:hover': {backgroundColor: 'whitesmoke'}}}>
+          <Typography gutterBottom variant="h5" component="div" >
+            {title}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" >
+            {description}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Link>
+  </div>
   );
 }
 
